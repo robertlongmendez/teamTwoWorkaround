@@ -1,0 +1,37 @@
+    <div class="modal-header" >
+    <h4 class="modal-title">Slack Me</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body overflow-auto">
+
+    <p *ngIf="!this.sessionStarted">Drop me a line&hellip;</p>
+    <ul class="list-group" *ngIf="this.prospectsName">
+        <li class="list-group-item" *ngFor="let _message of _messages; let i = index">
+          <p>{{ _message.text[i] }}</p>
+        </li>
+      </ul>
+  </div>
+  <div class="modal-footer">
+          <!-- <form class="row row-cols-lg-auto g-3 align-items-center" #chatForm="ngForm" (ngSubmit)="onSendMessage(chatForm.value)"> -->
+          <form class="row row-cols-lg-auto g-3 align-items-center" #chatForm="ngForm" (ngSubmit)="sendMessage(chatForm.value)">
+              <div class="col-12">
+                  <div class="form-group">
+                      <input *ngIf="!this.sessionStarted" type="text" class="form-control" placeholder="Name" id="name" required ngModel name="name" />
+                      <p *ngIf="this.sessionStarted">{{ prospectsName }}</p>
+                  </div>
+                  <div class="form-group">
+                      <textarea class="form-control" placeholder="Message" id="message" required ngModel name="message" row="2"></textarea>
+                  </div>
+              </div>
+  
+              <div class="col-12">
+                  <button class="btn btn-primary" type="submit" [disabled]="!chatForm.valid">
+                      Send
+                  </button> 
+                  <button type="button"  class="btn btn-light pull-right" (click)="activeModal.close('Close click')">Close</button>
+              </div>
+          </form>
+    
+    </div>  
