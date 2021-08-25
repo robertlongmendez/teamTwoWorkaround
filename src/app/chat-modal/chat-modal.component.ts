@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./chat-modal.component.scss']
 })
 export class ChatModalComponent implements OnInit, OnDestroy {
-    private _messages: Message[];
+    _messages: Message[];
     prospectsName = '';
     sessionStarted = false;
     nameEntered = false;
@@ -23,7 +23,8 @@ export class ChatModalComponent implements OnInit, OnDestroy {
         this._messageSub = this.dataService.messagesChanged.subscribe(
             (messages: Message[]) => {
                 this._messages = messages;
-                console.log(`this._messages = ${this._messages}`);
+                // console.log(`this._messages = ${this._messages}`);
+                console.log(this._messages);
             }
         );
     }

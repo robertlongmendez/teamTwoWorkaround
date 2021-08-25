@@ -4,6 +4,7 @@ import { environment } from 'environments/environment';
 import { Session } from './session.model';
 import { Message } from './message.model';
 import { interval, Subject, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -52,7 +53,7 @@ export class DataService implements OnDestroy {
             .subscribe(
                 (response) => {
                     if (response['success']) {
-                        const messages = response['payload'] as Message[];
+                        const messages = response['payload'];
                         console.log('response recieved...');
                         if (this._messages != messages) {
                             this._messages = messages;
@@ -182,3 +183,6 @@ export class DataService implements OnDestroy {
 //     console.log(response);
 // }
 // )
+// .pipe(map(response => {
+
+// }))

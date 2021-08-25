@@ -7,11 +7,16 @@
   <div class="modal-body overflow-auto">
 
     <p *ngIf="!this.sessionStarted">Drop me a line&hellip;</p>
-    <ul class="list-group" *ngIf="this.prospectsName">
-        <li class="list-group-item" *ngFor="let _message of _messages; let i = index">
-          <p>{{ _message.text[i] }}</p>
+
+    <app-messages *ngFor="let _message of _messages" [name]="_message[0].user" [text]="_message[0].text" [timestamp]="_message[0].timestamp"></app-messages>
+    <!-- <ul class="list-group" *ngIf="this.prospectsName">
+        <li class="list-group-item" *ngFor="let _message of _messages">
+          <p>{{ _message.user }}</p>
         </li>
-      </ul>
+        <!-- <li class="list-group-item" *ngFor="let text of _messages">
+            <p>{{ text.text }}</p>
+        </li> -->
+      <!-- </ul> --> 
   </div>
   <div class="modal-footer">
           <!-- <form class="row row-cols-lg-auto g-3 align-items-center" #chatForm="ngForm" (ngSubmit)="onSendMessage(chatForm.value)"> -->
