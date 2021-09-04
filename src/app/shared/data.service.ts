@@ -167,7 +167,8 @@ export class DataService implements OnDestroy {
         localStorage.setItem(key, value);
     }
 
-    sendAndReceive() {
+    checkSession() {
+        this.restoreStoredSession();
     }
 
     ngOnDestroy() {
