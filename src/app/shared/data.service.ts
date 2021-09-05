@@ -132,6 +132,7 @@ export class DataService implements OnDestroy {
             console.log('restoring session...');
             this._session = JSON.parse(localStorage.getItem('session'));
             if (!this._timerSub) {
+                this.getMessages();
                 this.startMessageTimer();
             }
             return true;

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xl-12">
         <div [ngClass]=" user === 'slack' ? 'speech-bubble-received' : 'speech-bubble-sent' " class="d-sm-inline-flex p-2 bd-highlight">
-            <p>{{ user }}</p>
+            <p class="hideUser">{{ user }}</p>             
             <p>{{ text }}</p>
             <p class="time">{{ timestamp }}</p>
         </div>
