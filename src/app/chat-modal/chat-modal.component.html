@@ -4,20 +4,17 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body overflow-auto">
+  <div class="modal-body overflow-auto overflow: scroll;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
 
     <p *ngIf="!this.sessionStarted">Drop me a line&hellip;</p>
 
     <app-messages *ngFor="let _message of _messages"  [text]="_message[0].text" [user]="_message[0].user"></app-messages>
-      
-     <!-- [timestamp]="_message[0].timestamp" -->
   </div>
   <div class="modal-footer">
-          <!-- <form class="row row-cols-lg-auto g-3 align-items-center" #chatForm="ngForm" (ngSubmit)="onSendMessage(chatForm.value)"> -->
           <form class="row row-cols-lg-auto g-3 align-items-center" #chatForm="ngForm" (ngSubmit)="sendMessage(chatForm.value)">
               <div class="col-12">
                   <div class="form-group">
-                      <input *ngIf="!this.sessionStarted" type="text" class="form-control" placeholder="Name" id="name" required ngModel name="name" />
+                      <input *ngIf="!this.sessionStarted" type="text" class="form-control" placeholder="Name" id="name" ngModel name="name" />
                       <p *ngIf="this.sessionStarted">{{ prospectsName }}</p>
                   </div>
                   <div class="form-group">

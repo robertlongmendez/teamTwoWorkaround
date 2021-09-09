@@ -4,7 +4,6 @@ import { environment } from 'environments/environment';
 import { Session } from './session.model';
 import { Message } from './message.model';
 import { interval, Subject, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +12,6 @@ export class DataService implements OnDestroy {
     private _session: Session;
     private _messages: Message[];
     private _timerSub: Subscription;
-
     messagesChanged: Subject<Message[]>;
 
     constructor(private http: HttpClient) {
@@ -134,6 +132,7 @@ export class DataService implements OnDestroy {
             if (!this._timerSub) {
                 this.getMessages();
                 this.startMessageTimer();
+                
             }
             return true;
         } else {
